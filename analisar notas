@@ -1,0 +1,72 @@
+programa {
+    inteiro notas[5]
+
+    funcao inicio(){
+        inteiro opcao = 0
+    enquanto(opcao != 4){
+        escreva("=====SISTEMA ESCOLA=====\n")
+  
+            escreva("1-Cadastrar notas\n")
+            escreva("2-Calcular media e ver se foi aprovado\n")
+            escreva("3-Mostrar maior nota\n")
+            escreva("4-Sair\n")
+            escreva("Insira uma opcao: ")
+            leia(opcao)
+
+            escolha(opcao){
+                caso 1: cadastrarNotas() pare
+                caso 2: calcularMedia() pare
+                caso 3: mostrarMaiornota() pare
+                caso 4: sair() pare
+                caso contrario: escreva("Opcao invalida!\n\n")
+            }
+        }
+    }
+
+    funcao cadastrarNotas(){
+        inteiro contador
+        para(contador=0; contador<5; contador++){
+            escreva("Informe a nota ", contador+1, " : ")
+            leia(notas[contador])
+        }
+        escreva("\n5 notas cadastradas com sucesso!\n\n")
+    }
+
+    funcao calcularMedia(){
+        real soma = 0.0
+        real media = 0.0
+        inteiro contador
+
+        para(contador=0; contador<5; contador++){
+            soma = soma + notas[contador]
+        }
+        
+        media = soma / 5
+        escreva("\n--- RESULTADO ---\n")
+        escreva("A media e: ", media, "\n")
+
+        se(media >= 7){
+            escreva("Situacao: ALUNO APROVADO!\n\n")
+        } senao se(media >= 5){
+            escreva("Situacao: ALUNO EM RECUPERACAO!\n\n")
+        } senao {
+            escreva("Situacao: ALUNO REPROVADO!\n\n")
+        }
+    }
+
+    funcao mostrarMaiornota(){
+        inteiro contador
+        inteiro maior = notas[0]
+        
+        para(contador=1; contador<5; contador++){
+            se(notas[contador] > maior){
+                maior = notas[contador]
+            }
+        }
+        escreva("\nMaior nota: ", maior, "\n\n")
+    }
+
+    funcao sair(){
+        escreva("Saindo...")
+    }
+}
